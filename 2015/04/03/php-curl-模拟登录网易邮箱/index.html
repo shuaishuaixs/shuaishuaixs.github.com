@@ -8,20 +8,20 @@
   <meta name="360-site-verification" content="67fbcc5a67f4c65c057315b28fa0b2c8" />
 <meta name="google-site-verification" content="2GzxQ0VtXwTSUdmGm6DzcmhTzM_I9QmzCb_pzpMzD88" />
   
-    <title>潇洒哥</title>
+    <title>php-curl-模拟登录网易邮箱 | 潇洒哥</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
     
     <meta name="author" content="Shuaishuai">
     
-    <meta name="description" content="title: php curl 模拟登录date: 2015-04-03 15:23:18
-tags:[php]
-使用php的curl模拟登录网易邮箱">
+    <meta name="description" content="最近在看学习使用curl，发现功能确实很强大，为防以后忘记，先记下来
+curl使用post方式提交数据，模拟登录网易邮箱
+1234567891011121314151617181920212223242526272829303132function curl_post(){        $data">
     
     
     
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:site" content="thanksir" />
-    <meta name="twitter:title" content="潇洒哥" />
+    <meta name="twitter:title" content="php-curl-模拟登录网易邮箱 | 潇洒哥" />
       
     
     
@@ -75,15 +75,15 @@ tags:[php]
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2015/04/03/php-curl-模拟登录/" title="" itemprop="url"></a>
+      <a href="/2015/04/03/php-curl-模拟登录网易邮箱/" title="php-curl-模拟登录网易邮箱" itemprop="url">php-curl-模拟登录网易邮箱</a>
   </h1>
   <p class="article-author">By
     
       <a href="http://xsxsblog.com" title="Shuaishuai">Shuaishuai</a>
     </p>
   <p class="article-time">
-    <time datetime="2015-04-03T07:29:17.000Z" itemprop="datePublished">4月 3 2015</time>
-    更新日期:<time datetime="2015-04-03T07:29:17.000Z" itemprop="dateModified">4月 3 2015</time>
+    <time datetime="2015-04-03T08:46:19.000Z" itemprop="datePublished">4月 3 2015</time>
+    更新日期:<time datetime="2015-04-03T09:20:57.000Z" itemprop="dateModified">4月 3 2015</time>
     
   </p>
 </header>
@@ -92,22 +92,28 @@ tags:[php]
 		
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
-		<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#tags:[php]"><span class="toc-number">1.</span> <span class="toc-text">tags:[php]</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#使用php的curl模拟登录网易邮箱"><span class="toc-number">1.1.</span> <span class="toc-text">使用php的curl模拟登录网易邮箱</span></a></li></ol></li></ol>
+		
 		</div>
 		
-		<p>title: php curl 模拟登录<br>date: 2015-04-03 15:23:18</p>
-<h2 id="tags:[php]">tags:[php]</h2>
-<h3 id="使用php的curl模拟登录网易邮箱">使用php的curl模拟登录网易邮箱</h3>
+		<p>最近在看学习使用curl，发现功能确实很强大，为防以后忘记，先记下来</p>
+<p>curl使用post方式提交数据，模拟登录网易邮箱</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">curl_post</span><span class="params">()</span></span>{</div><div class="line">        <span class="variable">$data</span> = <span class="keyword">array</span>(</div><div class="line">                <span class="string">'username'</span>=&gt;<span class="string">'your_username'</span>,</div><div class="line">                <span class="string">'password'</span>=&gt;<span class="string">'your_password'</span>,</div><div class="line">                <span class="string">'type'</span>=&gt;<span class="number">1</span>,</div><div class="line">                <span class="string">'product'</span>=&gt;<span class="string">'urs'</span>,</div><div class="line">                <span class="string">'url'</span>=&gt;<span class="string">''</span>,</div><div class="line">                <span class="string">'url2'</span>=&gt;<span class="string">'http://reg.163.com/UserLogin.do'</span>,</div><div class="line">        );</div><div class="line">        <span class="variable">$url</span> = <span class="string">'https://reg.163.com/logins.jsp'</span>;<span class="comment">//login_url</span></div><div class="line">        <span class="variable">$postinfo</span> = http_build_query(<span class="variable">$data</span>);</div><div class="line">        <span class="variable">$cookie_file_path</span> = <span class="string">'./data/upload/cookie163.txt'</span>;<span class="comment">//store your cookie file</span></div><div class="line">        <span class="variable">$ch</span> = curl_init();</div><div class="line">        curl_setopt(<span class="variable">$ch</span>,CURLOPT_URL,<span class="variable">$url</span>);</div><div class="line">        curl_setopt(<span class="variable">$ch</span>, CURLOPT_SSL_VERIFYHOST, <span class="number">0</span>);</div><div class="line">        curl_setopt(<span class="variable">$ch</span>, CURLOPT_RETURNTRANSFER, <span class="number">1</span>);</div><div class="line">        curl_setopt(<span class="variable">$ch</span>, CURLOPT_POST, <span class="number">1</span>);</div><div class="line">        curl_setopt(<span class="variable">$ch</span>, CURLOPT_POSTFIELDS, <span class="variable">$postinfo</span>);</div><div class="line">        curl_setopt(<span class="variable">$ch</span>, CURLOPT_COOKIEJAR, <span class="variable">$cookie_file_path</span>);<span class="comment">//get cookie file</span></div><div class="line">        <span class="variable">$html</span> = curl_exec(<span class="variable">$ch</span>);</div><div class="line">        curl_close(<span class="variable">$ch</span>);</div><div class="line"></div><div class="line">        <span class="comment">//use got cookie file to open jump_url</span></div><div class="line">        <span class="variable">$ch2</span> = curl_init(<span class="string">'http://reg.163.com/Main.jsp?username=your_username'</span>);</div><div class="line">        curl_setopt(<span class="variable">$ch2</span>, CURLOPT_HEADER, <span class="number">0</span>);</div><div class="line">        curl_setopt(<span class="variable">$ch2</span>, CURLOPT_RETURNTRANSFER, <span class="number">1</span>);</div><div class="line">        curl_setopt(<span class="variable">$ch2</span>, CURLOPT_FOLLOWLOCATION, <span class="number">0</span>);</div><div class="line">        curl_setopt(<span class="variable">$ch2</span>, CURLOPT_COOKIEFILE, <span class="variable">$cookie_file_path</span>);</div><div class="line">        curl_setopt(<span class="variable">$ch2</span>, CURLOPT_TIMEOUT, <span class="number">15</span>);</div><div class="line">        <span class="variable">$contents</span> = curl_exec(<span class="variable">$ch2</span>);</div><div class="line">        curl_close(<span class="variable">$ch2</span>);</div><div class="line">}</div></pre></td></tr></table></figure>
+
   
 	</div>
 		<footer class="article-footer clearfix">
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/php/">php</a>
+  </div>
 
 
 
 
 <div class="article-share" id="share">
 
-  <div data-url="http://xsxsblog.com/2015/04/03/php-curl-模拟登录/" data-title="潇洒哥" data-tsina="null" class="share clearfix">
+  <div data-url="http://xsxsblog.com/2015/04/03/php-curl-模拟登录网易邮箱/" data-title="php-curl-模拟登录网易邮箱 | 潇洒哥" data-tsina="null" class="share clearfix">
   </div>
 
 </div>
@@ -130,7 +136,7 @@ tags:[php]
 	
 <section class="comment">
 	
-	<div class="ds-thread" data-title="" data-thread-key="php-curl-模拟登录" data-author-key="Shuaishuai" data-url="http://xsxsblog.com/post/php-curl-模拟登录"></div>
+	<div class="ds-thread" data-title="php-curl-模拟登录网易邮箱" data-thread-key="php-curl-模拟登录网易邮箱" data-author-key="Shuaishuai" data-url="http://xsxsblog.com/post/php-curl-模拟登录网易邮箱"></div>
 	
 </section>
 
@@ -140,7 +146,7 @@ tags:[php]
 
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
-  <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#tags:[php]"><span class="toc-number">1.</span> <span class="toc-text">tags:[php]</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#使用php的curl模拟登录网易邮箱"><span class="toc-number">1.1.</span> <span class="toc-text">使用php的curl模拟登录网易邮箱</span></a></li></ol></li></ol>
+  
   </div>
 
 <div id="asidepart">
@@ -180,6 +186,8 @@ tags:[php]
 <div class="tagslist">
 	<p class="asidetitle">标签</p>
 		<ul class="clearfix">
+		
+			<li><a href="/tags/php/" title="php">php<sup>1</sup></a></li>
 		
 			<li><a href="/tags/发现/" title="发现">发现<sup>1</sup></a></li>
 		
