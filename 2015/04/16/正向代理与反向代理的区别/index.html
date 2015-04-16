@@ -8,21 +8,21 @@
   <meta name="360-site-verification" content="67fbcc5a67f4c65c057315b28fa0b2c8" />
 <meta name="google-site-verification" content="2GzxQ0VtXwTSUdmGm6DzcmhTzM_I9QmzCb_pzpMzD88" />
   
-    <title>模拟登录网易邮箱 | 潇洒哥</title>
+    <title>正向代理与反向代理的区别 | 潇洒哥</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
     
     <meta name="author" content="Shuaishuai">
     
-    <meta name="description" content="最近在看学习使用curl，发现功能确实很强大，为防以后忘记，先记下来
-curl使用post方式提交数据，模拟登录网易邮箱 
-相关链接：http://stackoverflow.com/questions/3008817/login-to-remote-site-with-php-curl
-12345">
+    <meta name="description" content="简单的说
+正向代理是代理客户端，反向代理是代理服务器端。
+详细的说
+正向代理是因为本身无法访问而以另一个用户的身份去请求服务器上的数据，客户端先请求代理服务器去访问目的网站，目的网站把数据返回给代理服务器，然后代理服务器再把数据给客户端，这种情况下，目的网站无法获取真实客户端的IP信息，获取的是代理">
     
     
     
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:site" content="thanksir" />
-    <meta name="twitter:title" content="模拟登录网易邮箱 | 潇洒哥" />
+    <meta name="twitter:title" content="正向代理与反向代理的区别 | 潇洒哥" />
       
     
     
@@ -76,15 +76,15 @@ curl使用post方式提交数据，模拟登录网易邮箱
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2015/04/03/模拟登录网易邮箱/" title="模拟登录网易邮箱" itemprop="url">模拟登录网易邮箱</a>
+      <a href="/2015/04/16/正向代理与反向代理的区别/" title="正向代理与反向代理的区别" itemprop="url">正向代理与反向代理的区别</a>
   </h1>
   <p class="article-author">By
     
       <a href="http://xsxsblog.com" title="Shuaishuai">Shuaishuai</a>
     </p>
   <p class="article-time">
-    <time datetime="2015-04-03T09:41:03.000Z" itemprop="datePublished">4月 3 2015</time>
-    更新日期:<time datetime="2015-04-07T05:55:32.000Z" itemprop="dateModified">4月 7 2015</time>
+    <time datetime="2015-04-16T05:43:15.000Z" itemprop="datePublished">4月 16 2015</time>
+    更新日期:<time datetime="2015-04-16T05:51:03.000Z" itemprop="dateModified">4月 16 2015</time>
     
   </p>
 </header>
@@ -93,21 +93,21 @@ curl使用post方式提交数据，模拟登录网易邮箱
 		
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
-		
+		<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#简单的说"><span class="toc-number">1.</span> <span class="toc-text">简单的说</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#详细的说"><span class="toc-number">2.</span> <span class="toc-text">详细的说</span></a></li></ol>
 		</div>
 		
-		<p>最近在看学习使用curl，发现功能确实很强大，为防以后忘记，先记下来</p>
-<p>curl使用post方式提交数据，模拟登录网易邮箱 </p>
-<p>相关链接：<a href="http://stackoverflow.com/questions/3008817/login-to-remote-site-with-php-curl" target="_blank" rel="external">http://stackoverflow.com/questions/3008817/login-to-remote-site-with-php-curl</a></p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"><span class="variable">$data</span> = <span class="keyword">array</span>(</div><div class="line">	<span class="string">'username'</span>=&gt;<span class="string">'your_username'</span>,</div><div class="line">	<span class="string">'password'</span>=&gt;<span class="string">'your_password'</span>,</div><div class="line">	<span class="string">'type'</span>=&gt;<span class="number">1</span>,</div><div class="line">	<span class="string">'product'</span>=&gt;<span class="string">'urs'</span>,</div><div class="line">	<span class="string">'url'</span>=&gt;<span class="string">''</span>,</div><div class="line">	<span class="string">'url2'</span>=&gt;<span class="string">'http://reg.163.com/UserLogin.do'</span>,</div><div class="line">);</div><div class="line"><span class="variable">$url</span> = <span class="string">'https://reg.163.com/logins.jsp'</span>;</div><div class="line"><span class="variable">$postinfo</span> = http_build_query(<span class="variable">$data</span>);</div><div class="line"><span class="variable">$cookie_file_path</span> = <span class="string">'./data/upload/cookie163.txt'</span>;</div><div class="line"><span class="variable">$ch</span> = curl_init();</div><div class="line">curl_setopt(CURLOPT_URL,<span class="variable">$url</span>);</div><div class="line">curl_setopt(CURLOPT_SSL_VERIFYHOST,<span class="number">0</span>);</div><div class="line">curl_setopt(CURLOPT_RETURNTRANSFER,<span class="number">1</span>);</div><div class="line">curl_setopt(CURLOPT_COOKIEJAR,<span class="variable">$cookie_file_path</span>);</div><div class="line"><span class="variable">$html</span> = curl_exec(<span class="variable">$ch</span>);</div><div class="line">curl_close(<span class="variable">$ch</span>);</div><div class="line"></div><div class="line"><span class="variable">$ch2</span> = curl_init(<span class="string">'http://reg.163.com/Main.jsp?username=your_username'</span>);</div><div class="line">curl_setopt(<span class="variable">$ch2</span>,CURLOPT_HEADER,<span class="number">0</span>);</div><div class="line">curl_setopt(<span class="variable">$ch2</span>,CURLOPT_RETURNTRANSFER,<span class="number">1</span>);</div><div class="line">curl_setopt(<span class="variable">$ch2</span>,CURLOPT_FOLLOWLOCATION,<span class="number">0</span>);</div><div class="line">curl_setopt(<span class="variable">$ch2</span>,CURLOPT_COOKIEFILE,<span class="variable">$cookie_file_path</span>);</div><div class="line">curl_setopt(<span class="variable">$ch2</span>,CURLOPT_TIMEOUT,<span class="number">15</span>);</div><div class="line"><span class="variable">$contents</span> = curl_exec(<span class="variable">$ch2</span>);</div><div class="line">curl_close(<span class="variable">$ch2</span>);</div><div class="line">dump(<span class="variable">$contents</span>);</div></pre></td></tr></table></figure>
-
+		<h3 id="简单的说">简单的说</h3>
+<p>正向代理是代理客户端，反向代理是代理服务器端。</p>
+<h3 id="详细的说">详细的说</h3>
+<p>正向代理是因为本身无法访问而以另一个用户的身份去请求服务器上的数据，客户端先请求代理服务器去访问目的网站，目的网站把数据返回给代理服务器，然后代理服务器再把数据给客户端，这种情况下，目的网站无法获取真实客户端的IP信息，获取的是代理服务器IP。（比如vpn翻墙，就是通过代理去访问）</p>
+<p>反向代理是客户端去访问真实服务器端，要通过虚假服务器，但是虚假服务器上有客户端请求的数据（主要承担对真实服务器上静态数据、文件的请求），所以不需要再去访问真实服务器，对客户端来说，虚假服务器即为真实服务器，由虚假服务器来为客户端提供服务，可以减轻来自真实服务器的访问压力。</p>
   
 	</div>
 		<footer class="article-footer clearfix">
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/php/">php</a>
+  <span></span> <a href="/tags/nginx/">nginx</a>
   </div>
 
 
@@ -115,7 +115,7 @@ curl使用post方式提交数据，模拟登录网易邮箱
 
 <div class="article-share" id="share">
 
-  <div data-url="http://xsxsblog.com/2015/04/03/模拟登录网易邮箱/" data-title="模拟登录网易邮箱 | 潇洒哥" data-tsina="null" class="share clearfix">
+  <div data-url="http://xsxsblog.com/2015/04/16/正向代理与反向代理的区别/" data-title="正向代理与反向代理的区别 | 潇洒哥" data-tsina="null" class="share clearfix">
   </div>
 
 </div>
@@ -124,19 +124,11 @@ curl使用post方式提交数据，模拟登录网易邮箱
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/2015/04/16/正向代理与反向代理的区别/" title="正向代理与反向代理的区别">
-  <strong>PREVIOUS:</strong><br/>
-  <span>
-  正向代理与反向代理的区别</span>
-</a>
-</div>
-
 
 <div class="next">
-<a href="/2015/01/23/发现了个好东西pidgin-lwqq/"  title="发现了个好东西pidgin-lwqq">
+<a href="/2015/04/03/模拟登录网易邮箱/"  title="模拟登录网易邮箱">
  <strong>NEXT:</strong><br/> 
- <span>发现了个好东西pidgin-lwqq
+ <span>模拟登录网易邮箱
 </span>
 </a>
 </div>
@@ -146,7 +138,7 @@ curl使用post方式提交数据，模拟登录网易邮箱
 	
 <section class="comment">
 	
-	<div class="ds-thread" data-title="模拟登录网易邮箱" data-thread-key="模拟登录网易邮箱" data-author-key="Shuaishuai" data-url="http://xsxsblog.com/post/模拟登录网易邮箱"></div>
+	<div class="ds-thread" data-title="正向代理与反向代理的区别" data-thread-key="正向代理与反向代理的区别" data-author-key="Shuaishuai" data-url="http://xsxsblog.com/post/正向代理与反向代理的区别"></div>
 	
 </section>
 
@@ -156,7 +148,7 @@ curl使用post方式提交数据，模拟登录网易邮箱
 
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
-  
+  <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#简单的说"><span class="toc-number">1.</span> <span class="toc-text">简单的说</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#详细的说"><span class="toc-number">2.</span> <span class="toc-text">详细的说</span></a></li></ol>
   </div>
 
 <div id="asidepart">
